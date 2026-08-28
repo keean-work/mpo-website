@@ -263,7 +263,7 @@ export default function ProductDevelopmentPage() {
       <Section tone="muted">
         <SectionHeading
           title="What the playbook is"
-          description="The playbook is a practical guide to product ways of working in defence. It brings together principles, frameworks and examples for teams developing or improving software products."
+          description="Jointly developed by MPO and DSTA, the playbook is a practical guide to product ways of working in defence. It brings together principles, frameworks and examples for teams developing or improving software products."
         />
       </Section>
 
