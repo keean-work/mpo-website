@@ -1,4 +1,4 @@
-import { TOOL_ACCENTS } from "@/components/site/spectrum-bar";
+import { TOOL_ACCENTS } from "@/lib/spectrum";
 import { Text } from "@/components/ui/text";
 import { ArrowRight } from "lucide-react";
 import type { CSSProperties, ReactNode } from "react";

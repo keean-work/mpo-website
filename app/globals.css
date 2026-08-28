@@ -87,6 +87,24 @@
   }
 }
 
+/* Temporary glow on a tool card when its Spectrum bar segment is clicked.
+   --glow-color is set inline (per-tool accent) by the SpectrumBar. */
+@keyframes tool-glow {
+  0% {
+    box-shadow:
+      0 0 0 3px var(--glow-color, transparent),
+      0 0 28px 6px var(--glow-color, transparent);
+  }
+  100% {
+    box-shadow:
+      0 0 0 0 transparent,
+      0 0 0 0 transparent;
+  }
+}
+.tool-glow {
+  animation: tool-glow 2s ease-out;
+}
+
 /* Respect reduced-motion preferences (accessibility, spec §13). */
 @media (prefers-reduced-motion: reduce) {
   *,
