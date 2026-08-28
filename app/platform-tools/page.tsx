@@ -1,103 +1,72 @@
-import { ActionLink } from "@/components/site/action-link";
 import { Breadcrumbs } from "@/components/site/breadcrumbs";
 import { CtaBanner } from "@/components/site/cta-banner";
+import { ExternalLink } from "@/components/site/external-link";
 import { Hero } from "@/components/site/hero";
-import { Pending } from "@/components/site/pending";
 import { Section, SectionHeading } from "@/components/site/section";
 import { ToolPanel, type ToolPanelData } from "@/components/site/tool-panel";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Text } from "@/components/ui/text";
-import { Info, Layers } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Layers } from "lucide-react";
 import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Platform & tools",
   description:
-    "Platforms and tools available to product teams, and when each one is useful.",
+    "The platforms and tools MPO uses in its own product work and recommends to other teams, spanning research, design and measurement.",
 };
 
-const NEEDS = [
-  { label: "Research and synthesis", href: "#research" },
-  { label: "Design and prototyping", href: "#design" },
-  { label: "Build and delivery", href: "#build" },
-  { label: "Measurement and insight", href: "#measure" },
+const SPECTRUM_URL = "https://spectrum-dsta.vercel.app/#products";
+
+// Tools sourced from Spectrum (spectrum-dsta.vercel.app), ordered the way the
+// practice runs. Descriptions are Spectrum's own copy; links open each tool.
+const TOOLS: ToolPanelData[] = [
+  {
+    id: "clara",
+    name: "CLARA",
+    phase: "All phases",
+    href: "https://dsta-productops.github.io/clara/",
+    description:
+      "CLARA reads your programme's knowledge base and drafts artefacts from it across research, design and test: synthesis, personas, journeys, requirements documents, storyboards, test plans. Every claim carries a citation back to the source it came from. Work that takes a research lead one to two weeks drafts in minutes.",
+  },
+  {
+    id: "insight",
+    name: "INSIGHT",
+    phase: "Research",
+    href: "https://insight.vercel.app/",
+    description:
+      "INSIGHT listens while you run a user interview or a focus group. It suggests the next question, explains jargon as it comes up, and pulls the relevant part of your brief. It runs on your own machine, offline, and hands you a speaker-labelled transcript at the end, so nobody has to take notes.",
+    note: "The macOS and Windows applications are not released yet.",
+  },
+  {
+    id: "prizm",
+    name: "PRIZM",
+    phase: "Design",
+    href: "https://prizm-design.github.io/prizm/",
+    description:
+      "PRIZM is a design system of 44 components, covering both command-and-control interfaces and enterprise web applications, in light and dark. It is written so an AI assistant can read it and build screens from components that already exist instead of inventing new ones.",
+  },
+  {
+    id: "dash",
+    name: "DASH",
+    phase: "Measure",
+    href: "https://diux-dash.com/",
+    description:
+      "DASH records your product's metrics. You take a baseline, then measure each later round against it. DASH AI reads the data you have collected, explains what it points to, and suggests where to improve. It covers a single product or a whole portfolio.",
+  },
+  {
+    id: "beacon",
+    name: "BEACON",
+    phase: "Start here",
+    href: "https://productops-copilot.vercel.app/",
+    description:
+      "BEACON explains how research, design and measurement fit together, lists every tool with how to get access to it, and holds a library of prompts you can paste straight into your work. Its AI assistant answers questions about the practice: which tool fits the phase you are in, and how to use it. Start here if you are not sure where to begin.",
+  },
 ];
 
-const CLARA: ToolPanelData = {
-  id: "clara",
-  name: "CLARA",
-  category: "Research and synthesis",
-  description:
-    "CLARA helps product teams work with programme knowledge and create structured research outputs with supporting references.",
-  fields: [
-    { label: "Intended users" },
-    { label: "Supported research tasks" },
-    { label: "Required inputs" },
-    { label: "Output types" },
-    { label: "Access link" },
-    { label: "Support contact" },
-  ],
-};
-
-const PRIZM: ToolPanelData = {
-  id: "prizm",
-  name: "PRIZM",
-  category: "Design and prototyping",
-  description:
-    "PRIZM is a design system for building consistent digital interfaces. It provides approved components, patterns and design guidance for product teams.",
-  fields: [
-    { label: "Intended users" },
-    { label: "Available components and guidance" },
-    { label: "When teams should use PRIZM" },
-    { label: "Access link" },
-    { label: "Support contact" },
-  ],
-};
-
-const ACE_FOUNDRY: ToolPanelData = {
-  id: "ace-foundry",
-  name: "ACE / Foundry",
-  category: "Build and delivery",
-  // Description not yet approved (spec §9: do not infer purpose from the name).
-  fields: [
-    { label: "What it is" },
-    { label: "Who it is for" },
-    { label: "What it helps users do" },
-    { label: "When to use it" },
-    { label: "Access requirements" },
-    { label: "Support contact" },
-  ],
-};
-
-const INSIGHT: ToolPanelData = {
-  id: "insight",
-  name: "INSIGHT",
-  category: "Measurement and insight",
-  fields: [
-    { label: "What it is" },
-    { label: "Who it is for" },
-    { label: "What it helps users do" },
-    { label: "When to use it" },
-    { label: "Access link" },
-    { label: "Support contact" },
-  ],
-};
-
-const BEACON: ToolPanelData = {
-  id: "beacon",
-  name: "BEACON",
-  category: "Measurement and insight",
-  fields: [
-    { label: "What it is" },
-    { label: "Who it is for" },
-    { label: "What it helps users do" },
-    { label: "When to use it" },
-    { label: "Access link" },
-    { label: "Support contact" },
-  ],
-};
+const NEEDS = TOOLS.map((t) => ({ label: `${t.name} · ${t.phase}`, href: `#${t.id}` }));
 
 export default function PlatformToolsPage() {
   return (
@@ -106,16 +75,16 @@ export default function PlatformToolsPage() {
         top={<Breadcrumbs items={[{ label: "Platform & tools" }]} />}
         banner="/images/platform-tools-banner.svg"
         title="Platforms and tools for product teams"
-        body="Find the systems, design resources and product tools that support research, design, delivery and measurement."
+        body="The platforms and tools MPO uses in its own product work, and recommends to other teams. Each supports a phase of product practice, from research through design to measurement."
       />
 
-      {/* Browse by need */}
+      {/* Framing + Spectrum */}
       <Section tone="muted">
         <SectionHeading
-          title="Browse by need"
-          description="Jump to the tools that support each stage of product work."
+          title="Platforms and tools MPO uses and recommends"
+          description="MPO builds its own products with these tools and recommends them to other teams. They are part of Spectrum, the product-practice platform developed by DSTA and co-created with MPO."
         />
-        <nav aria-label="Browse by need" className="mt-6 flex flex-wrap gap-3">
+        <nav aria-label="Jump to a tool" className="mt-6 flex flex-wrap gap-3">
           {NEEDS.map((need) => (
             <Link
               key={need.href}
@@ -126,11 +95,7 @@ export default function PlatformToolsPage() {
             </Link>
           ))}
         </nav>
-      </Section>
-
-      {/* Spectrum callout */}
-      <Section>
-        <Card>
+        <Card className="mt-8">
           <CardContent className="flex flex-col gap-4 p-6 sm:flex-row sm:items-start sm:gap-5">
             <span
               className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-bg-muted text-accent"
@@ -138,73 +103,50 @@ export default function PlatformToolsPage() {
             >
               <Layers className="h-5 w-5" />
             </span>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col items-start gap-3">
               <Text weight="semibold">Spectrum</Text>
               <Text size="sm" variant="muted">
-                Spectrum brings together product tools used across research,
-                design and measurement. Choose a tool based on the task you need
-                to complete. PRIZM, CLARA, INSIGHT and BEACON are part of
-                Spectrum.
+                Spectrum is a platform for product practice, with AI at every
+                step: working out the real problem, designing for it, and proving
+                it worked. The tools below are ordered the way the practice runs.
               </Text>
-              <Text size="xs" variant="subtle">
-                <Pending>
-                  Confirm this description and whether Spectrum is the approved
-                  name for the tool group
-                </Pending>
-              </Text>
+              <ExternalLink
+                href={SPECTRUM_URL}
+                className={cn(
+                  buttonVariants({ variant: "outline", size: "sm" }),
+                  "no-underline hover:no-underline",
+                )}
+              >
+                Visit Spectrum
+              </ExternalLink>
             </div>
           </CardContent>
         </Card>
       </Section>
 
-      {/* Research and synthesis */}
-      <Section id="research" tone="muted" className="scroll-mt-20">
-        <SectionHeading title="Research and synthesis" as="h2" />
+      {/* The tools */}
+      <Section>
+        <SectionHeading title="The tools" as="h2" />
         <div className="mt-6 grid gap-6 lg:grid-cols-2">
-          <ToolPanel tool={CLARA} />
-        </div>
-      </Section>
-
-      {/* Design and prototyping */}
-      <Section id="design" className="scroll-mt-20">
-        <SectionHeading title="Design and prototyping" as="h2" />
-        <div className="mt-6 grid gap-6 lg:grid-cols-2">
-          <ToolPanel tool={PRIZM} />
-        </div>
-      </Section>
-
-      {/* Build and delivery */}
-      <Section id="build" tone="muted" className="scroll-mt-20">
-        <SectionHeading title="Build and delivery" as="h2" />
-        <Alert className="mt-6">
-          <Info aria-hidden />
-          <AlertTitle>Description to be confirmed</AlertTitle>
-          <AlertDescription>
-            An approved description for ACE / Foundry is not yet available. Its
-            purpose is not inferred from its name.
-          </AlertDescription>
-        </Alert>
-        <div className="mt-6 grid gap-6 lg:grid-cols-2">
-          <ToolPanel tool={ACE_FOUNDRY} />
-        </div>
-      </Section>
-
-      {/* Measurement and insight */}
-      <Section id="measure" className="scroll-mt-20">
-        <SectionHeading title="Measurement and insight" as="h2" />
-        <div className="mt-6 grid gap-6 lg:grid-cols-2">
-          <ToolPanel tool={INSIGHT} />
-          <ToolPanel tool={BEACON} />
+          {TOOLS.map((tool) => (
+            <ToolPanel key={tool.id} tool={tool} />
+          ))}
         </div>
       </Section>
 
       <CtaBanner
-        title="Need access to a platform or tool?"
-        body="Check the relevant tool for its access instructions, or contact MPO to be pointed to the right place."
+        title="Want to use these tools, or build the next one?"
+        body="Spectrum gets more useful the more of the product community builds on it. Explore the platform to see how the tools fit together."
         action={
-          <ActionLink href="/contact" size="lg" fullWidth>
-            Contact MPO
-          </ActionLink>
+          <ExternalLink
+            href={SPECTRUM_URL}
+            className={cn(
+              buttonVariants({ variant: "solid", size: "lg" }),
+              "w-full no-underline hover:no-underline sm:w-auto",
+            )}
+          >
+            Explore Spectrum
+          </ExternalLink>
         }
       />
     </>

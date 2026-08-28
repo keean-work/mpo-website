@@ -79,32 +79,36 @@ const FEATURED_PRODUCTS: Product[] = PRODUCTS.map((p) => ({
   scorecardHref: `/products/${p.slug}#scorecard`,
 }));
 
-// Featured platforms and tools. Only PRIZM and CLARA have approved descriptions
-// (spec §9, §14); the others show a "to be confirmed" marker.
+// Featured platforms and tools, sourced from Spectrum (the product-practice
+// platform these tools belong to). See /platform-tools for the full set.
 const FEATURED_TOOLS: Tool[] = [
   {
-    name: "PRIZM",
-    category: "Design and prototyping",
-    purpose:
-      "PRIZM is a design system for building consistent digital interfaces. It provides approved components, patterns and design guidance for product teams.",
-    href: "/platform-tools#prizm",
-  },
-  {
     name: "CLARA",
-    category: "Research and synthesis",
+    category: "All phases",
     purpose:
-      "CLARA helps product teams work with programme knowledge and create structured research outputs with supporting references.",
+      "Reads your programme's knowledge base and drafts research, design and test artefacts, with every claim cited back to its source.",
     href: "/platform-tools#clara",
   },
   {
-    name: "ACE / Foundry",
-    category: "Build and delivery",
-    href: "/platform-tools#ace-foundry",
+    name: "PRIZM",
+    category: "Design",
+    purpose:
+      "A design system of 44 components for command-and-control and enterprise web interfaces, written so an AI assistant can build screens from existing parts.",
+    href: "/platform-tools#prizm",
   },
   {
-    name: "INSIGHT",
-    category: "Measurement and insight",
-    href: "/platform-tools#insight",
+    name: "DASH",
+    category: "Measure",
+    purpose:
+      "Records your product's metrics against a baseline, and its AI explains what the data points to and where to improve.",
+    href: "/platform-tools#dash",
+  },
+  {
+    name: "BEACON",
+    category: "Start here",
+    purpose:
+      "Explains how research, design and measurement fit together, lists every tool and how to access it, and answers questions about the practice.",
+    href: "/platform-tools#beacon",
   },
 ];
 
