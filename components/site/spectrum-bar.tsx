@@ -5,12 +5,14 @@ import { Text } from "@/components/ui/text";
  * "spectrum" visual on spectrum-dsta.vercel.app. Colours are the site's own
  * per-tool accents; recreated inline (no remote asset) for air-gap safety.
  */
+// Spectrum's light-mode band colours (deeper and more saturated than the
+// dark-mode bar) so the accents read crisply on the light diagrams.
 export const TOOL_ACCENTS: Record<string, string> = {
-  clara: "oklch(0.789 0.154 211.53)",
-  insight: "oklch(0.769 0.157 222.3)",
-  prizm: "oklch(0.748 0.16 233.07)",
-  dash: "oklch(0.728 0.162 243.85)",
-  beacon: "oklch(0.707 0.165 254.62)",
+  clara: "oklch(0.715 0.143 215.22)",
+  insight: "oklch(0.673 0.168 227.13)",
+  prizm: "oklch(0.63 0.194 239.05)",
+  dash: "oklch(0.588 0.22 250.97)",
+  beacon: "oklch(0.546 0.245 262.88)",
 };
 
 const SEGMENTS = [
