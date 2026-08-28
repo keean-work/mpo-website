@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     "The platforms and tools MPO uses in its own product work and recommends to other teams, spanning research, design and measurement.",
 };
 
-const SPECTRUM_URL = "https://spectrum-dsta.vercel.app/#products";
+const SPECTRUM_URL = "https://spectrum-dsta.vercel.app/";
 
 // Tools sourced from Spectrum (spectrum-dsta.vercel.app), ordered the way the
 // practice runs. Descriptions are Spectrum's own copy; links open each tool.
