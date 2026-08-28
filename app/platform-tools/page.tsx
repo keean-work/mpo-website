@@ -9,7 +9,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Text } from "@/components/ui/text";
 import { cn } from "@/lib/utils";
 import { Layers } from "lucide-react";
-import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -66,8 +65,6 @@ const TOOLS: ToolPanelData[] = [
   },
 ];
 
-const NEEDS = TOOLS.map((t) => ({ label: `${t.name} · ${t.phase}`, href: `#${t.id}` }));
-
 export default function PlatformToolsPage() {
   return (
     <>
@@ -84,17 +81,6 @@ export default function PlatformToolsPage() {
           title="Platforms and tools MPO uses and recommends"
           description="MPO builds its own products with these tools and recommends them to other teams. They are part of Spectrum, the product-practice platform developed by DSTA and co-created with MPO."
         />
-        <nav aria-label="Jump to a tool" className="mt-6 flex flex-wrap gap-3">
-          {NEEDS.map((need) => (
-            <Link
-              key={need.href}
-              href={need.href}
-              className="inline-flex min-h-11 items-center rounded-md border border-border bg-surface px-4 text-sm font-medium text-fg no-underline transition-colors hover:bg-bg-muted focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-accent"
-            >
-              {need.label}
-            </Link>
-          ))}
-        </nav>
         <Card className="mt-8">
           <CardContent className="flex flex-col gap-4 p-6 sm:flex-row sm:items-start sm:gap-5">
             <span
