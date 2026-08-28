@@ -3,6 +3,7 @@ import { asset } from "@/lib/asset";
 import { ProductStatusBadge, type ProductStatus } from "@/components/site/status-badge";
 import { Card, CardTitle } from "@/components/ui/card";
 import { Text } from "@/components/ui/text";
+import NextLink from "next/link";
 import type { ReactNode } from "react";
 
 export type ProductThumb = {
@@ -21,7 +22,7 @@ export type ProductThumb = {
 export function ProductThumbCard({ product }: { product: ProductThumb }) {
   return (
     <Card className="group flex h-full flex-col overflow-hidden p-0 transition-shadow hover:shadow-md">
-      <a href={product.href} className="flex h-full flex-col no-underline">
+      <NextLink href={product.href} className="flex h-full flex-col no-underline">
         <div className="aspect-[16/10] w-full overflow-hidden border-b border-border bg-bg-muted">
           {product.image ? (
             <img
@@ -44,7 +45,7 @@ export function ProductThumbCard({ product }: { product: ProductThumb }) {
             {product.description ?? "Details to be confirmed."}
           </Text>
         </div>
-      </a>
+      </NextLink>
     </Card>
   );
 }
