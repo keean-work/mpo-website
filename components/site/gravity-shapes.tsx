@@ -59,7 +59,14 @@ export function GravityShapes({ className }: { className?: string }) {
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    const els = shapeRefs.current.filter(Boolean) as HTMLDivElement[];
+    const allEls = shapeRefs.current.filter(Boolean) as HTMLDivElement[];
+    // Halve the shape count on small screens so they don't crowd the view; the
+    // extras are hidden (not animated). Decided once at mount to avoid tearing
+    // down and rebuilding the physics engine on resize.
+    const mobile = window.matchMedia("(max-width: 639px)").matches;
+    const count = mobile ? Math.ceil(allEls.length / 2) : allEls.length;
+    const els = allEls.slice(0, count);
+    for (const el of allEls.slice(count)) el.style.display = "none";
     const W = container.offsetWidth;
     const H = container.offsetHeight;
 
@@ -76,10 +83,14 @@ export function GravityShapes({ className }: { className?: string }) {
     }
 
     let raf = 0;
+    let cancelled = false;
     let cleanup = () => {};
 
     (async () => {
       const Matter = (await import("matter-js")).default;
+      // The effect can be torn down (e.g. mobile/desktop switch) before the
+      // async import resolves — bail so we never start an orphaned engine.
+      if (cancelled) return;
       const { Engine, World, Bodies, Body, Runner } = Matter;
 
       const engine = Engine.create();
@@ -200,7 +211,10 @@ export function GravityShapes({ className }: { className?: string }) {
       };
     })();
 
-    return () => cleanup();
+    return () => {
+      cancelled = true;
+      cleanup();
+    };
   }, []);
 
   return (
