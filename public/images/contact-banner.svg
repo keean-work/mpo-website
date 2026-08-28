@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="600" viewBox="0 0 1600 600" fill="none" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="wash6" x1="1080" y1="0" x2="1600" y2="600" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#CAD5E2" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#CAD5E2" stop-opacity="0.67"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="600" fill="#F5F7FA"/>
+  <path d="M1070 0H1600V600H1240C1315 460 1230 260 1070 0Z" fill="url(#wash6)"/>
+  <g stroke="#CAD5E2" stroke-width="2">
+    <rect x="1160" y="-28" width="126" height="126" rx="34" transform="rotate(8 1160 -28)" fill="#FFFFFF" fill-opacity="0.82"/>
+    <rect x="1320" y="36" width="96" height="96" rx="27" transform="rotate(-7 1320 36)" fill="#E8EEF5"/>
+    <rect x="1460" y="-15" width="152" height="152" rx="40" transform="rotate(10 1460 -15)" fill="#FFFFFF" fill-opacity="0.78"/>
+    <rect x="1250" y="205" width="116" height="116" rx="32" transform="rotate(-9 1250 205)" fill="#CAD5E2" fill-opacity="0.54"/>
+    <rect x="1425" y="185" width="138" height="138" rx="37" transform="rotate(6 1425 185)" fill="#FFFFFF" fill-opacity="0.80"/>
+    <rect x="1165" y="390" width="104" height="104" rx="29" transform="rotate(9 1165 390)" fill="#E8EEF5"/>
+    <rect x="1335" y="405" width="145" height="145" rx="39" transform="rotate(-7 1335 405)" fill="#FFFFFF" fill-opacity="0.78"/>
+    <rect x="1510" y="460" width="112" height="112" rx="31" transform="rotate(8 1510 460)" fill="#CAD5E2" fill-opacity="0.56"/>
+  </g>
+  <circle cx="1085" cy="110" r="24" fill="#1447E6" fill-opacity="0.70"/>
+  <circle cx="1375" cy="155" r="59" fill="#1447E6"/>
+  <circle cx="1535" cy="340" r="38" fill="#1447E6" fill-opacity="0.84"/>
+  <circle cx="1280" cy="510" r="27" fill="#1447E6" fill-opacity="0.76"/>
+  <circle cx="1580" cy="125" r="19" fill="#1447E6" fill-opacity="0.66"/>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="600" viewBox="0 0 1600 600" fill="none" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <radialGradient id="wash4" cx="0" cy="0" r="1" gradientTransform="translate(1360 300) rotate(180) scale(660 430)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#CAD5E2" stop-opacity="0.66"/>
+      <stop offset="1" stop-color="#E8EEF5" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="600" fill="#F5F7FA"/>
+  <rect x="710" width="890" height="600" fill="url(#wash4)"/>
+  <g stroke="#CAD5E2" stroke-width="2">
+    <rect x="930" y="72" width="142" height="142" rx="38" transform="rotate(-11 930 72)" fill="#FFFFFF" fill-opacity="0.82"/>
+    <rect x="1015" y="355" width="108" height="108" rx="29" transform="rotate(8 1015 355)" fill="#E8EEF5"/>
+    <rect x="1160" y="205" width="150" height="150" rx="39" transform="rotate(-7 1160 205)" fill="#FFFFFF" fill-opacity="0.78"/>
+    <rect x="1270" y="445" width="112" height="112" rx="30" transform="rotate(10 1270 445)" fill="#CAD5E2" fill-opacity="0.58"/>
+    <rect x="1375" y="55" width="158" height="158" rx="41" transform="rotate(7 1375 55)" fill="#FFFFFF" fill-opacity="0.82"/>
+    <rect x="1460" y="315" width="124" height="124" rx="33" transform="rotate(-9 1460 315)" fill="#E8EEF5"/>
+    <rect x="1515" y="505" width="105" height="105" rx="28" transform="rotate(6 1515 505)" fill="#FFFFFF" fill-opacity="0.76"/>
+  </g>
+  <rect x="1110" y="455" width="86" height="86" rx="24" fill="#CAD5E2" fill-opacity="0.70"/>
+  <circle cx="1045" cy="275" r="46" fill="#1447E6" fill-opacity="0.82"/>
+  <circle cx="1245" cy="95" r="66" fill="#1447E6"/>
+  <circle cx="1355" cy="355" r="40" fill="#1447E6" fill-opacity="0.86"/>
+  <circle cx="1515" cy="225" r="27" fill="#1447E6" fill-opacity="0.76"/>
+  <circle cx="1460" cy="545" r="22" fill="#1447E6" fill-opacity="0.72"/>
+</svg>
