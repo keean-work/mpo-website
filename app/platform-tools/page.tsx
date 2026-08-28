@@ -108,27 +108,25 @@ export default function PlatformToolsPage() {
 
       {/* The tools — Spectrum introduced first, then the individual tools */}
       <Section>
-        <SectionHeading title="The tools" as="h2" />
-        {/* Spectrum introduced first via its spectrum bar (not in a card). */}
-        <div className="mt-8 flex flex-col gap-6">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <SectionHeading
+            title="Spectrum"
+            as="h2"
+            description="Spectrum is a platform for product practice, with AI at every step: working out the real problem, designing for it, and proving it worked. It is developed by DSTA and co-created with MPO. The tools below are ordered the way the practice runs."
+          />
+          <ExternalLink
+            href={SPECTRUM_URL}
+            className={cn(
+              buttonVariants({ variant: "outline" }),
+              "shrink-0 whitespace-nowrap no-underline hover:no-underline",
+            )}
+          >
+            Visit Spectrum
+          </ExternalLink>
+        </div>
+        {/* Spectrum bar (not in a card), then the individual tools. */}
+        <div className="mt-8">
           <SpectrumBar />
-          <div className="flex max-w-3xl flex-col items-start gap-3">
-            <Text variant="muted">
-              Spectrum is a platform for product practice, with AI at every step:
-              working out the real problem, designing for it, and proving it
-              worked. It is developed by DSTA and co-created with MPO. The tools
-              below are ordered the way the practice runs.
-            </Text>
-            <ExternalLink
-              href={SPECTRUM_URL}
-              className={cn(
-                buttonVariants({ variant: "outline", size: "sm" }),
-                "no-underline hover:no-underline",
-              )}
-            >
-              Visit Spectrum
-            </ExternalLink>
-          </div>
         </div>
         <div className="mt-10 grid gap-6 lg:grid-cols-2">
           {TOOLS.map((tool) => (
