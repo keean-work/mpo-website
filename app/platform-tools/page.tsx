@@ -74,7 +74,7 @@ export default function PlatformToolsPage() {
         top={<Breadcrumbs items={[{ label: "Platform & tools" }]} />}
         banner="/images/platform-tools-banner.svg"
         title="Platforms and tools for product teams"
-        body="The platform and tools MPO uses to build its own products, and recommends to other teams. They span every phase of product practice, from research through design to measurement."
+        body="The platform and tools MPO uses to build its own products, and recommends to other teams. Developed by DSTA and co-created with MPO, they span every phase of product practice, from research through design to measurement."
       />
 
       {/* The platform */}
