@@ -2,13 +2,14 @@ import { Breadcrumbs } from "@/components/site/breadcrumbs";
 import { CtaBanner } from "@/components/site/cta-banner";
 import { ExternalLink } from "@/components/site/external-link";
 import { Hero } from "@/components/site/hero";
+import { Pending } from "@/components/site/pending";
 import { Section, SectionHeading } from "@/components/site/section";
 import { ToolPanel, type ToolPanelData } from "@/components/site/tool-panel";
 import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Text } from "@/components/ui/text";
 import { cn } from "@/lib/utils";
-import { Layers } from "lucide-react";
+import { Boxes, Layers } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -72,16 +73,40 @@ export default function PlatformToolsPage() {
         top={<Breadcrumbs items={[{ label: "Platform & tools" }]} />}
         banner="/images/platform-tools-banner.svg"
         title="Platforms and tools for product teams"
-        body="The platforms and tools MPO uses in its own product work, and recommends to other teams. Each supports a phase of product practice, from research through design to measurement."
+        body="The platform and tools MPO uses to build its own products, and recommends to other teams. They span every phase of product practice, from research through design to measurement."
       />
 
-      {/* Framing + Spectrum */}
+      {/* The platform */}
       <Section tone="muted">
         <SectionHeading
-          title="Platforms and tools MPO uses and recommends"
-          description="MPO builds its own products with these tools and recommends them to other teams. They are part of Spectrum, the product-practice platform developed by DSTA and co-created with MPO."
+          title="The platform"
+          description="ACE / Foundry is the platform MPO uses to build and run its products."
         />
         <Card className="mt-8">
+          <CardContent className="flex flex-col gap-4 p-6 sm:flex-row sm:items-start sm:gap-5">
+            <span
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-bg-muted text-accent"
+              aria-hidden
+            >
+              <Boxes className="h-5 w-5" />
+            </span>
+            <div className="flex flex-col gap-2">
+              <Text weight="semibold">ACE / Foundry</Text>
+              <Text size="sm" variant="muted">
+                <Pending>
+                  An approved description for ACE / Foundry is not yet available.
+                  Its purpose is not inferred from its name.
+                </Pending>
+              </Text>
+            </div>
+          </CardContent>
+        </Card>
+      </Section>
+
+      {/* The tools — Spectrum introduced first, then the individual tools */}
+      <Section>
+        <SectionHeading title="The tools" as="h2" />
+        <Card className="mt-6">
           <CardContent className="flex flex-col gap-4 p-6 sm:flex-row sm:items-start sm:gap-5">
             <span
               className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-bg-muted text-accent"
@@ -94,7 +119,8 @@ export default function PlatformToolsPage() {
               <Text size="sm" variant="muted">
                 Spectrum is a platform for product practice, with AI at every
                 step: working out the real problem, designing for it, and proving
-                it worked. The tools below are ordered the way the practice runs.
+                it worked. It is developed by DSTA and co-created with MPO. The
+                tools below are ordered the way the practice runs.
               </Text>
               <ExternalLink
                 href={SPECTRUM_URL}
@@ -108,11 +134,6 @@ export default function PlatformToolsPage() {
             </div>
           </CardContent>
         </Card>
-      </Section>
-
-      {/* The tools */}
-      <Section>
-        <SectionHeading title="The tools" as="h2" />
         <div className="mt-6 grid gap-6 lg:grid-cols-2">
           {TOOLS.map((tool) => (
             <ToolPanel key={tool.id} tool={tool} />
