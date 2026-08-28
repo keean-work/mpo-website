@@ -1,4 +1,5 @@
 import { BrandMark } from "@/components/site/brand-mark";
+import { asset } from "@/lib/asset";
 import { ProductStatusBadge, type ProductStatus } from "@/components/site/status-badge";
 import { Card, CardTitle } from "@/components/ui/card";
 import { Text } from "@/components/ui/text";
@@ -24,7 +25,7 @@ export function ProductThumbCard({ product }: { product: ProductThumb }) {
         <div className="aspect-[16/10] w-full overflow-hidden border-b border-border bg-bg-muted">
           {product.image ? (
             <img
-              src={product.image.src}
+              src={asset(product.image.src)}
               alt={product.image.alt}
               className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.02]"
             />

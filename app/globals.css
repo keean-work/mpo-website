@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
-/* Self-hosted fonts (air-gap safe — files live in /public/fonts/). */
-@import "../styles/fonts.css";
+/* Self-hosted fonts (air-gap safe — files live in /public/fonts/).
+   @font-face rules are injected from app/layout.tsx so their URLs carry the
+   deploy base path (see styles/fonts.css for the root-served copy). */
 
 /* PRIZM tokens — Enterprise zone only.
    baseline.css defines the raw palettes; enterprise-light is the default :root;

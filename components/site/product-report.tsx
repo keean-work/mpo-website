@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Text } from "@/components/ui/text";
+import { asset } from "@/lib/asset";
 import { cn } from "@/lib/utils";
 import type { ProductInfo } from "@/lib/products";
 import { getReport } from "@/lib/products";
@@ -116,7 +117,7 @@ function ProductImage({
   return (
     <figure className={cn("overflow-hidden rounded-lg border border-border", className)}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img ref={ref} src={src} alt={alt} onError={() => setOk(false)} className="block w-full" />
+      <img ref={ref} src={asset(src)} alt={alt} onError={() => setOk(false)} className="block w-full" />
     </figure>
   );
 }
@@ -292,7 +293,7 @@ export function ProductReport({ product }: { product: ProductInfo }) {
               <div className="flex -space-x-2">
                 {team.photos.map((src, i) => (
                   <Avatar key={src} size="lg" className="ring-2 ring-bg">
-                    <AvatarImage src={src} alt="" />
+                    <AvatarImage src={asset(src)} alt="" />
                     <AvatarFallback>
                       <User className="h-4 w-4" aria-hidden />
                     </AvatarFallback>

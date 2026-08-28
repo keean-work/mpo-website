@@ -1,6 +1,7 @@
 import { Container } from "@/components/site/container";
 import { Heading } from "@/components/ui/heading";
 import { Text } from "@/components/ui/text";
+import { asset } from "@/lib/asset";
 import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
 
@@ -35,7 +36,7 @@ export function HeroBanner({
           band, anchored right so the shapes stay clear of the left copy. */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/images/hero-banner.svg"
+        src={asset("/images/hero-banner.svg")}
         alt=""
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-10 hidden h-full w-full object-cover object-right lg:block"

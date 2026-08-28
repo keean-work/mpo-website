@@ -22,6 +22,9 @@ const nextConfig = {
   // Emit `route/index.html` so Pages resolves clean URLs without a server.
   trailingSlash: true,
   ...(isPages ? { basePath: repoBase, assetPrefix: repoBase } : {}),
+  // Expose the base path to app code so plain <img> tags and injected @font-face
+  // rules (which Next does NOT auto-prefix) can build correct asset URLs.
+  env: { NEXT_PUBLIC_BASE_PATH: isPages ? repoBase : "" },
 };
 
 export default nextConfig;

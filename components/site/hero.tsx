@@ -1,4 +1,5 @@
 import { Container } from "@/components/site/container";
+import { asset } from "@/lib/asset";
 import { Heading } from "@/components/ui/heading";
 import { Text } from "@/components/ui/text";
 import { cn } from "@/lib/utils";
@@ -45,7 +46,7 @@ export function Hero({
               anchored right so the shapes stay clear of the left copy. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={banner}
+            src={asset(banner)}
             alt=""
             aria-hidden
             className="pointer-events-none absolute inset-0 -z-10 hidden h-full w-full object-cover object-right lg:block"
