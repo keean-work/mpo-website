@@ -1,4 +1,5 @@
 import { ExternalLink } from "@/components/site/external-link";
+import { ToolDiagram } from "@/components/site/tool-diagram";
 import { buttonVariants } from "@/components/ui/button";
 import {
   Card,
@@ -29,7 +30,11 @@ export type ToolPanelData = {
  */
 export function ToolPanel({ tool, className }: { tool: ToolPanelData; className?: string }) {
   return (
-    <Card id={tool.id} className={cn("flex h-full flex-col scroll-mt-24", className)}>
+    <Card
+      id={tool.id}
+      className={cn("flex h-full flex-col overflow-hidden scroll-mt-24", className)}
+    >
+      <ToolDiagram id={tool.id} />
       <CardHeader className="gap-2">
         <Text size="xs" variant="subtle" weight="medium" as="span" className="uppercase tracking-wide">
           {tool.phase}

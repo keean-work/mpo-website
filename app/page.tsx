@@ -105,7 +105,7 @@ const FEATURED_TOOLS: Tool[] = [
   },
   {
     name: "BEACON",
-    category: "Start here",
+    category: "Portal",
     purpose:
       "Explains how research, design and measurement fit together, lists every tool and how to access it, and answers questions about the practice.",
     href: "/platform-tools#beacon",

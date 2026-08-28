@@ -4,12 +4,13 @@ import { ExternalLink } from "@/components/site/external-link";
 import { Hero } from "@/components/site/hero";
 import { Pending } from "@/components/site/pending";
 import { Section, SectionHeading } from "@/components/site/section";
+import { SpectrumBar } from "@/components/site/spectrum-bar";
 import { ToolPanel, type ToolPanelData } from "@/components/site/tool-panel";
 import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Text } from "@/components/ui/text";
 import { cn } from "@/lib/utils";
-import { Boxes, Layers } from "lucide-react";
+import { Boxes } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -59,7 +60,7 @@ const TOOLS: ToolPanelData[] = [
   {
     id: "beacon",
     name: "BEACON",
-    phase: "Start here",
+    phase: "Portal",
     href: "https://productops-copilot.vercel.app/",
     description:
       "BEACON explains how research, design and measurement fit together, lists every tool with how to get access to it, and holds a library of prompts you can paste straight into your work. Its AI assistant answers questions about the practice: which tool fits the phase you are in, and how to use it. Start here if you are not sure where to begin.",
@@ -106,35 +107,28 @@ export default function PlatformToolsPage() {
       {/* The tools — Spectrum introduced first, then the individual tools */}
       <Section>
         <SectionHeading title="The tools" as="h2" />
-        <Card className="mt-6">
-          <CardContent className="flex flex-col gap-4 p-6 sm:flex-row sm:items-start sm:gap-5">
-            <span
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-bg-muted text-accent"
-              aria-hidden
+        {/* Spectrum introduced first via its spectrum bar (not in a card). */}
+        <div className="mt-8 flex flex-col gap-6">
+          <SpectrumBar />
+          <div className="flex max-w-3xl flex-col items-start gap-3">
+            <Text variant="muted">
+              Spectrum is a platform for product practice, with AI at every step:
+              working out the real problem, designing for it, and proving it
+              worked. It is developed by DSTA and co-created with MPO. The tools
+              below are ordered the way the practice runs.
+            </Text>
+            <ExternalLink
+              href={SPECTRUM_URL}
+              className={cn(
+                buttonVariants({ variant: "outline", size: "sm" }),
+                "no-underline hover:no-underline",
+              )}
             >
-              <Layers className="h-5 w-5" />
-            </span>
-            <div className="flex flex-col items-start gap-3">
-              <Text weight="semibold">Spectrum</Text>
-              <Text size="sm" variant="muted">
-                Spectrum is a platform for product practice, with AI at every
-                step: working out the real problem, designing for it, and proving
-                it worked. It is developed by DSTA and co-created with MPO. The
-                tools below are ordered the way the practice runs.
-              </Text>
-              <ExternalLink
-                href={SPECTRUM_URL}
-                className={cn(
-                  buttonVariants({ variant: "outline", size: "sm" }),
-                  "no-underline hover:no-underline",
-                )}
-              >
-                Visit Spectrum
-              </ExternalLink>
-            </div>
-          </CardContent>
-        </Card>
-        <div className="mt-6 grid gap-6 lg:grid-cols-2">
+              Visit Spectrum
+            </ExternalLink>
+          </div>
+        </div>
+        <div className="mt-10 grid gap-6 lg:grid-cols-2">
           {TOOLS.map((tool) => (
             <ToolPanel key={tool.id} tool={tool} />
           ))}
