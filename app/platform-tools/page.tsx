@@ -1,6 +1,7 @@
 import { Breadcrumbs } from "@/components/site/breadcrumbs";
-import { CtaBanner } from "@/components/site/cta-banner";
+import { Container } from "@/components/site/container";
 import { ExternalLink } from "@/components/site/external-link";
+import { GravityShapes } from "@/components/site/gravity-shapes";
 import { Hero } from "@/components/site/hero";
 import { Pending } from "@/components/site/pending";
 import { Section, SectionHeading } from "@/components/site/section";
@@ -8,6 +9,7 @@ import { SpectrumBar } from "@/components/site/spectrum-bar";
 import { ToolPanel, type ToolPanelData } from "@/components/site/tool-panel";
 import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Heading } from "@/components/ui/heading";
 import { Text } from "@/components/ui/text";
 import { cn } from "@/lib/utils";
 import { Boxes } from "lucide-react";
@@ -135,21 +137,39 @@ export default function PlatformToolsPage() {
         </div>
       </Section>
 
-      <CtaBanner
-        title="Want to use these tools, or build the next one?"
-        body="Spectrum gets more useful the more of the product community builds on it. Explore the platform to see how the tools fit together."
-        action={
-          <ExternalLink
-            href={SPECTRUM_URL}
-            className={cn(
-              buttonVariants({ variant: "solid", size: "lg" }),
-              "w-full no-underline hover:no-underline sm:w-auto",
-            )}
-          >
-            Explore Spectrum
-          </ExternalLink>
-        }
-      />
+      {/* Get involved — over a gravity playground of logo shapes */}
+      <section className="relative overflow-hidden">
+        <GravityShapes />
+        <Container className="pointer-events-none relative flex min-h-[380px] flex-col items-center justify-start py-12">
+          <div className="flex max-w-2xl flex-col items-center gap-5 text-center">
+            <Text
+              size="sm"
+              weight="medium"
+              className="uppercase tracking-wide text-accent"
+            >
+              Get involved
+            </Text>
+            <Heading as="h2" size="3xl">
+              Use it, or help build the next one.
+            </Heading>
+            <Text size="lg" variant="muted">
+              If your team wants to use any of these tools, or to co-create the
+              next one, we would like to hear from you.
+            </Text>
+            <div className="pointer-events-auto">
+              <a
+                href="mailto:designinno@dsta.gov.sg"
+                className={cn(
+                  buttonVariants({ variant: "solid", size: "lg" }),
+                  "no-underline hover:no-underline",
+                )}
+              >
+                designinno@dsta.gov.sg
+              </a>
+            </div>
+          </div>
+        </Container>
+      </section>
     </>
   );
 }
