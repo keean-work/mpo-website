@@ -9,12 +9,10 @@ import { ProcessSteps } from "@/components/site/process-steps";
 import { ProductCard, type Product } from "@/components/site/product-card";
 import { Section, SectionHeading } from "@/components/site/section";
 import { ToolCard, type Tool } from "@/components/site/tool-card";
-import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Heading } from "@/components/ui/heading";
 import { Text } from "@/components/ui/text";
-import { cn } from "@/lib/utils";
-import { PLAYBOOK_URL, REPORT_CARDS_URL } from "@/lib/nav";
+import { PLAYBOOK_URL } from "@/lib/nav";
 import { PULSE_PRODUCTS } from "@/lib/pulse-products";
 
 // The five areas the Defence Product Playbook covers (labels match the Product
@@ -219,15 +217,13 @@ export default function HomePage() {
               title="Featured products"
               description="Explore the user problems these products address, who they serve and how their outcomes are tracked. Full report cards live in PULSE."
             />
-            <ExternalLink
-              href={REPORT_CARDS_URL}
-              className={cn(
-                buttonVariants({ variant: "outline" }),
-                "shrink-0 whitespace-nowrap no-underline hover:no-underline",
-              )}
+            <ActionLink
+              href="/products"
+              variant="outline"
+              className="shrink-0 whitespace-nowrap"
             >
-              View all report cards
-            </ExternalLink>
+              View all products
+            </ActionLink>
           </div>
           <div className="mt-8 grid gap-6 sm:grid-cols-2">
             {FEATURED_PRODUCTS.map((p) => (

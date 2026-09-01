@@ -7,7 +7,7 @@ export const REPORT_CARDS_URL = "https://pulse-reportcards.vercel.app/";
 export const PRIMARY_NAV: NavItem[] = [
   { label: "About us", href: "/about" },
   { label: "Product development", href: "/product-development" },
-  { label: "Products", href: REPORT_CARDS_URL, external: true },
+  { label: "Products", href: "/products" },
   { label: "Platform & tools", href: "/platform-tools" },
   { label: "Funding & support", href: "/funding-support" },
   { label: "Contact us", href: "/contact" },

@@ -10,7 +10,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Card, CardContent } from "@/components/ui/card";
 import { Heading } from "@/components/ui/heading";
 import { Text } from "@/components/ui/text";
-import { PRODUCTS } from "@/lib/products";
+import { PULSE_PRODUCTS } from "@/lib/pulse-products";
 import { Info } from "lucide-react";
 import type { Metadata } from "next";
 
@@ -49,12 +49,14 @@ const ONE_PAGER_FIELDS = [
   "Related tools or playbook guidance",
 ];
 
-const PRODUCT_CARDS: ProductThumb[] = PRODUCTS.map((p) => ({
+// Products sourced from the PULSE report-card portal. Each card opens the
+// product's report card in a new tab.
+const PRODUCT_CARDS: ProductThumb[] = PULSE_PRODUCTS.map((p) => ({
   name: p.name,
   status: p.status,
-  description: p.profile?.cardDescription,
-  href: `/products/${p.slug}`,
-  image: p.profile?.image,
+  description: p.description,
+  href: p.reportCardHref ?? "",
+  external: true,
 }));
 
 export default function ProductsPage() {
