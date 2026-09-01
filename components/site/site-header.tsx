@@ -73,7 +73,6 @@ export function SiteHeader() {
                     className={className}
                   >
                     {item.label}
-                    <ExternalLinkIcon className="h-3.5 w-3.5 shrink-0" aria-hidden />
                     <span className="sr-only"> (opens in a new tab)</span>
                   </a>
                 );
