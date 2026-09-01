@@ -1,10 +1,13 @@
 /** Primary navigation — mirrors the sitemap in the content spec (§1). */
-export type NavItem = { label: string; href: string };
+export type NavItem = { label: string; href: string; external?: boolean };
+
+/** External product report-card portal (PULSE). */
+export const REPORT_CARDS_URL = "https://pulse-reportcards.vercel.app/";
 
 export const PRIMARY_NAV: NavItem[] = [
   { label: "About us", href: "/about" },
   { label: "Product development", href: "/product-development" },
-  { label: "Products", href: "/products" },
+  { label: "Products", href: REPORT_CARDS_URL, external: true },
   { label: "Platform & tools", href: "/platform-tools" },
   { label: "Funding & support", href: "/funding-support" },
   { label: "Contact us", href: "/contact" },

@@ -14,7 +14,7 @@ import {
 import { Container } from "@/components/site/container";
 import { PRIMARY_NAV } from "@/lib/nav";
 import { cn } from "@/lib/utils";
-import { Menu } from "lucide-react";
+import { ExternalLink as ExternalLinkIcon, Menu } from "lucide-react";
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -55,19 +55,35 @@ export function SiteHeader() {
             className="hidden items-center gap-1 xl:flex"
           >
             {PRIMARY_NAV.map((item) => {
-              const active = isActive(pathname, item.href);
+              const active = !item.external && isActive(pathname, item.href);
+              const className = cn(
+                "inline-flex items-center gap-1 whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                "focus-visible:outline-1 focus-visible:outline-offset-0 focus-visible:outline-accent",
+                active
+                  ? "bg-bg-muted text-fg"
+                  : "text-fg-muted hover:bg-bg-muted hover:text-fg",
+              );
+              if (item.external) {
+                return (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={className}
+                  >
+                    {item.label}
+                    <ExternalLinkIcon className="h-3.5 w-3.5 shrink-0" aria-hidden />
+                    <span className="sr-only"> (opens in a new tab)</span>
+                  </a>
+                );
+              }
               return (
                 <NextLink
                   key={item.href}
                   href={item.href}
                   aria-current={active ? "page" : undefined}
-                  className={cn(
-                    "whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium transition-colors",
-                    "focus-visible:outline-1 focus-visible:outline-offset-0 focus-visible:outline-accent",
-                    active
-                      ? "bg-bg-muted text-fg"
-                      : "text-fg-muted hover:bg-bg-muted hover:text-fg",
-                  )}
+                  className={className}
                 >
                   {item.label}
                 </NextLink>
@@ -92,24 +108,41 @@ export function SiteHeader() {
                 <SheetBody>
                   <nav aria-label="Primary" className="flex flex-col gap-1">
                     {PRIMARY_NAV.map((item) => {
-                      const active = isActive(pathname, item.href);
+                      const active = !item.external && isActive(pathname, item.href);
+                      const className = cn(
+                        "flex min-h-11 items-center gap-1.5 rounded-md px-3 text-base font-medium transition-colors",
+                        active
+                          ? "bg-bg-muted text-fg"
+                          : "text-fg-muted hover:bg-bg-muted hover:text-fg",
+                      );
                       return (
                         <SheetClose
                           key={item.href}
                           nativeButton={false}
                           render={
-                            <NextLink
-                              href={item.href}
-                              aria-current={active ? "page" : undefined}
-                              className={cn(
-                                "flex min-h-11 items-center rounded-md px-3 text-base font-medium transition-colors",
-                                active
-                                  ? "bg-bg-muted text-fg"
-                                  : "text-fg-muted hover:bg-bg-muted hover:text-fg",
-                              )}
-                            >
-                              {item.label}
-                            </NextLink>
+                            item.external ? (
+                              <a
+                                href={item.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={className}
+                              >
+                                {item.label}
+                                <ExternalLinkIcon
+                                  className="h-4 w-4 shrink-0"
+                                  aria-hidden
+                                />
+                                <span className="sr-only"> (opens in a new tab)</span>
+                              </a>
+                            ) : (
+                              <NextLink
+                                href={item.href}
+                                aria-current={active ? "page" : undefined}
+                                className={className}
+                              >
+                                {item.label}
+                              </NextLink>
+                            )
                           }
                         />
                       );

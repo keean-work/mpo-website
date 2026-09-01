@@ -9,11 +9,13 @@ import { ProcessSteps } from "@/components/site/process-steps";
 import { ProductCard, type Product } from "@/components/site/product-card";
 import { Section, SectionHeading } from "@/components/site/section";
 import { ToolCard, type Tool } from "@/components/site/tool-card";
+import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Heading } from "@/components/ui/heading";
 import { Text } from "@/components/ui/text";
-import { PLAYBOOK_URL } from "@/lib/nav";
-import { PRODUCTS } from "@/lib/products";
+import { cn } from "@/lib/utils";
+import { PLAYBOOK_URL, REPORT_CARDS_URL } from "@/lib/nav";
+import { PULSE_PRODUCTS } from "@/lib/pulse-products";
 
 // The five areas the Defence Product Playbook covers (labels match the Product
 // Development page). Used as a compact visual preview of the playbook.
@@ -66,18 +68,9 @@ const AUDIENCES = [
   },
 ];
 
-// Featured products. Card fields come from each product's profile where known
-// (URMS has a provisional public-information profile); otherwise they render as
-// "To be confirmed" (spec §14).
-const FEATURED_PRODUCTS: Product[] = PRODUCTS.map((p) => ({
-  name: p.name,
-  status: p.status,
-  description: p.profile?.cardDescription,
-  problem: p.profile?.cardProblem,
-  userGroup: p.profile?.cardUserGroup,
-  onePagerHref: `/products/${p.slug}`,
-  scorecardHref: `/products/${p.slug}#scorecard`,
-}));
+// Featured products, sourced from the PULSE report-card portal
+// (pulse-reportcards.vercel.app) and shown in the site's own card format.
+const FEATURED_PRODUCTS: Product[] = PULSE_PRODUCTS;
 
 // Featured platforms and tools, sourced from Spectrum (the product-practice
 // platform these tools belong to). See /platform-tools for the full set.
@@ -224,15 +217,17 @@ export default function HomePage() {
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <SectionHeading
               title="Featured products"
-              description="Explore the user problems these products address, who they serve and how their outcomes are tracked."
+              description="Explore the user problems these products address, who they serve and how their outcomes are tracked. Full report cards live in PULSE."
             />
-            <ActionLink
-              href="/products"
-              variant="outline"
-              className="shrink-0 whitespace-nowrap"
+            <ExternalLink
+              href={REPORT_CARDS_URL}
+              className={cn(
+                buttonVariants({ variant: "outline" }),
+                "shrink-0 whitespace-nowrap no-underline hover:no-underline",
+              )}
             >
-              View all products
-            </ActionLink>
+              View all report cards
+            </ExternalLink>
           </div>
           <div className="mt-8 grid gap-6 sm:grid-cols-2">
             {FEATURED_PRODUCTS.map((p) => (

@@ -47,12 +47,17 @@ export function StatusBadge({ status }: { status: StatusLabel }) {
  * Product lifecycle status (spec §12). The text label carries the meaning, so
  * status is never communicated by colour alone — no icon needed.
  */
-export type ProductStatus = "Active" | "Maintenance" | "Coming soon";
+export type ProductStatus =
+  | "Active"
+  | "Maintenance"
+  | "Coming soon"
+  | "Proof of concept";
 
 const PRODUCT_STATUS_MAP: Record<ProductStatus, BadgeProps["variant"]> = {
   Active: "success",
   Maintenance: "warning",
   "Coming soon": "subtle",
+  "Proof of concept": "info",
 };
 
 export function ProductStatusBadge({ status }: { status: ProductStatus }) {

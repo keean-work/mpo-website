@@ -56,11 +56,21 @@ export function SiteFooter() {
 
           {/* Explore */}
           <FooterGroup title="Explore">
-            {PRIMARY_NAV.map((item) => (
-              <FooterLink key={item.href} href={item.href}>
-                {item.label}
-              </FooterLink>
-            ))}
+            {PRIMARY_NAV.map((item) =>
+              item.external ? (
+                <ExternalLink
+                  key={item.href}
+                  href={item.href}
+                  className="min-h-9 items-center text-sm text-fg-muted no-underline hover:text-fg"
+                >
+                  {item.label}
+                </ExternalLink>
+              ) : (
+                <FooterLink key={item.href} href={item.href}>
+                  {item.label}
+                </FooterLink>
+              ),
+            )}
           </FooterGroup>
 
           {/* Resources */}
@@ -72,7 +82,6 @@ export function SiteFooter() {
               Defence Product Playbook
             </ExternalLink>
             <FooterLink href="/platform-tools">Platform & tools</FooterLink>
-            <FooterLink href="/products">Products</FooterLink>
           </FooterGroup>
 
           {/* Get support */}

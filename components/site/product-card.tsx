@@ -1,6 +1,8 @@
 import { ActionLink } from "@/components/site/action-link";
+import { ExternalLink } from "@/components/site/external-link";
 import { Pending } from "@/components/site/pending";
 import { ProductStatusBadge, type ProductStatus } from "@/components/site/status-badge";
+import { buttonVariants } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -19,8 +21,10 @@ export type Product = {
   description?: ReactNode;
   problem?: ReactNode;
   userGroup?: ReactNode;
-  onePagerHref: string;
+  onePagerHref?: string;
   scorecardHref?: string;
+  /** External report-card URL (PULSE). When set, replaces the internal CTAs. */
+  reportCardHref?: string;
 };
 
 function MetaField({ label, value }: { label: string; value?: ReactNode }) {
@@ -70,14 +74,30 @@ export function ProductCard({
         </div>
       </CardContent>
       <CardFooter className="gap-3 pt-0">
-        <ActionLink href={product.onePagerHref} variant="outline" size="sm">
-          View one-pager
-        </ActionLink>
-        {product.scorecardHref ? (
-          <ActionLink href={product.scorecardHref} variant="ghost" size="sm">
-            View scorecard
-          </ActionLink>
-        ) : null}
+        {product.reportCardHref ? (
+          <ExternalLink
+            href={product.reportCardHref}
+            className={cn(
+              buttonVariants({ variant: "outline", size: "sm" }),
+              "no-underline hover:no-underline",
+            )}
+          >
+            View report card
+          </ExternalLink>
+        ) : (
+          <>
+            {product.onePagerHref ? (
+              <ActionLink href={product.onePagerHref} variant="outline" size="sm">
+                View one-pager
+              </ActionLink>
+            ) : null}
+            {product.scorecardHref ? (
+              <ActionLink href={product.scorecardHref} variant="ghost" size="sm">
+                View scorecard
+              </ActionLink>
+            ) : null}
+          </>
+        )}
       </CardFooter>
     </Card>
   );
