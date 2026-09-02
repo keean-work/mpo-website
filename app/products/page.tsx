@@ -57,6 +57,7 @@ const PRODUCT_CARDS: ProductThumb[] = PULSE_PRODUCTS.map((p) => ({
   description: p.description,
   href: p.reportCardHref ?? "",
   external: true,
+  image: p.image,
 }));
 
 export default function ProductsPage() {

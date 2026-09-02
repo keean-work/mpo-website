@@ -25,6 +25,8 @@ export type Product = {
   scorecardHref?: string;
   /** External report-card URL (PULSE). When set, replaces the internal CTAs. */
   reportCardHref?: string;
+  /** Thumbnail for the products index card (ProductThumbCard). */
+  image?: { src: string; alt: string };
 };
 
 function MetaField({ label, value }: { label: string; value?: ReactNode }) {

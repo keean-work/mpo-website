@@ -26,3 +26,4 @@ next-env.d.ts
 
 # stray working file (duplicate of public/images/products/urms-login.png)
 /URMS image.png
+/nominal-roll.jpg

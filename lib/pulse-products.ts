@@ -18,5 +18,9 @@ export const PULSE_PRODUCTS: Product[] = [
       "Before every ICT, S8 clerks work out who can be called up by hand, collating names one at a time across at least four systems, two of which cannot be reached outside camp.",
     userGroup: "Unit commanders and S8 clerks (National Service)",
     reportCardHref: `${REPORT_CARDS_URL}nominal-roll/`,
+    image: {
+      src: "/images/products/nominal-roll.jpg",
+      alt: "Soldiers moving through tall grass during a field exercise",
+    },
   },
 ];
