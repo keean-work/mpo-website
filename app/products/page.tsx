@@ -3,8 +3,8 @@ import { Breadcrumbs } from "@/components/site/breadcrumbs";
 import { Checklist } from "@/components/site/checklist";
 import { CtaBanner } from "@/components/site/cta-banner";
 import { Hero } from "@/components/site/hero";
-import { Pending } from "@/components/site/pending";
-import { ProductThumbCard, type ProductThumb } from "@/components/site/product-thumb-card";
+import { ProductExplorer } from "@/components/site/product-explorer";
+import { type ProductThumb } from "@/components/site/product-thumb-card";
 import { Section, SectionHeading } from "@/components/site/section";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Card, CardContent } from "@/components/ui/card";
@@ -58,6 +58,7 @@ const PRODUCT_CARDS: ProductThumb[] = PULSE_PRODUCTS.map((p) => ({
   href: p.reportCardHref ?? "",
   external: true,
   image: p.image,
+  category: p.category,
 }));
 
 export default function ProductsPage() {
@@ -70,20 +71,9 @@ export default function ProductsPage() {
         banner="/images/products-banner.svg"
       />
 
-      {/* Portfolio introduction */}
+      {/* Portfolio — category filter + product grid */}
       <Section tone="muted">
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {PRODUCT_CARDS.map((p) => (
-            <ProductThumbCard key={p.name} product={p} />
-          ))}
-          {/* Additional products (spec §8 placeholder) */}
-          <Card className="flex h-full items-center justify-center border-dashed">
-            <CardContent className="flex flex-col items-center gap-2 p-6 text-center">
-              <Text weight="medium">Additional products</Text>
-              <Pending>More products to be added</Pending>
-            </CardContent>
-          </Card>
-        </div>
+        <ProductExplorer products={PRODUCT_CARDS} />
       </Section>
 
       {/* Product scorecards */}

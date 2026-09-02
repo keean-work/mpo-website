@@ -27,6 +27,8 @@ export type Product = {
   reportCardHref?: string;
   /** Thumbnail for the products index card (ProductThumbCard). */
   image?: { src: string; alt: string };
+  /** Category id for the products-page filter (see PRODUCT_CATEGORIES). */
+  category?: string;
 };
 
 function MetaField({ label, value }: { label: string; value?: ReactNode }) {

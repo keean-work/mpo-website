@@ -14,6 +14,8 @@ export type ProductThumb = {
   image?: { src: string; alt: string };
   /** When true, the card opens its href in a new tab (external report card). */
   external?: boolean;
+  /** Category id for the products-page filter. */
+  category?: string;
 };
 
 /**
